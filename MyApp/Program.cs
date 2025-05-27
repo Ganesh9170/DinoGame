@@ -4,6 +4,8 @@ using Microsoft.Playwright;
 
 class Program
 {
+    public static string LatestScore { get; set; }
+
     public static async Task Main()
     {
         using var playwright = await Playwright.CreateAsync();
@@ -12,7 +14,10 @@ class Program
             Headless = false
         });
 
-        var context = await browser.NewContextAsync();
+        var context = await browser.NewContextAsync(new()
+        {
+            
+        });
         var page = await context.NewPageAsync();
 
         await page.GotoAsync("https://elgoog.im/dinosaur-game/", new PageGotoOptions
@@ -25,6 +30,27 @@ class Program
         await page.WaitForTimeoutAsync(1000);
 
         // Start the game
+
+        // Log the score every second
+        _ = Task.Run(async () =>
+        {
+            while (true)
+            {
+            try
+            {
+                var score = await page.EvaluateAsync<string>(@"
+                () => {
+                    return Runner.instance_.distanceMeter.digits.join('');
+                }
+                ");
+                Console.WriteLine($"Score: {score}");
+                // Store the latest score in a static variable for access outside this task
+                Program.LatestScore = score;
+            }
+            catch { }
+            await Task.Delay(1000);
+            }
+        });
         await page.Keyboard.PressAsync("Space");
         Console.WriteLine("Game started!");
 
@@ -37,7 +63,7 @@ class Program
             {
                 Console.WriteLine("Game Over! Restarting...");
                 await page.Keyboard.PressAsync("Space");
-                await page.WaitForTimeoutAsync(1000);
+                await page.WaitForTimeoutAsync(2000);
                 continue;
             }
 

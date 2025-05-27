@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dino_Game\\MyApp\\MyApp.csproj": {}
+    "D:\\Enhance\\Dino_Game\\MyApp\\MyApp.csproj": {}
   },
   "projects": {
-    "D:\\Dino_Game\\MyApp\\MyApp.csproj": {
+    "D:\\Enhance\\Dino_Game\\MyApp\\MyApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dino_Game\\MyApp\\MyApp.csproj",
+        "projectUniqueName": "D:\\Enhance\\Dino_Game\\MyApp\\MyApp.csproj",
         "projectName": "MyApp",
-        "projectPath": "D:\\Dino_Game\\MyApp\\MyApp.csproj",
+        "projectPath": "D:\\Enhance\\Dino_Game\\MyApp\\MyApp.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Dino_Game\\MyApp\\obj\\",
+        "outputPath": "D:\\Enhance\\Dino_Game\\MyApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"
